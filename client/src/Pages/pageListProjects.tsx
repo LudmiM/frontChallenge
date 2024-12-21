@@ -22,7 +22,7 @@ export default function PageListProjects (){
   
     return (
       <div>
-        <NavList />
+        <NavList setProjects={setProjects} />
         <ListProject datesProject={projects}/>
       </div>
     )
