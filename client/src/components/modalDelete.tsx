@@ -3,6 +3,7 @@ import { IoIosClose } from "react-icons/io";
 import { ImCancelCircle } from "react-icons/im";
 import { toast } from "react-toastify";
 import deleteProjectApi from "../utils/fetch/deleteProject";
+import { useNavigate } from "react-router";
 
 interface MenuDeleteProps {
   id: number;
@@ -10,10 +11,12 @@ interface MenuDeleteProps {
 }
 
 const MenuDelete: React.FC<MenuDeleteProps> = ({ id, onClose }) => {
+  const navigate = useNavigate(); 
   const handleDelete = async () => {
     try {
           await deleteProjectApi(id);
-          toast.success("¡Elimino conexito el projecto!");
+          toast.success("¡Elimino conexito el proyecto!");
+          navigate(0); 
         } catch (error) {
           toast.error("¡Ocurrió un error!");
           console.log('error '+error)

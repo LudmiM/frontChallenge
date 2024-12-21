@@ -4,13 +4,13 @@ import editProjectApi from '../utils/fetch/editProject'
 import getProjectApi from '../utils/fetch/getProject'
 import { toast } from 'react-toastify';
 import {ProjectData, ProjectDataForm} from '../../enums/project';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 
 export default function EditProjects() {
   const { id } = useParams<{ id: string }>();
   const [projectData, setProjectData] = useState<ProjectData | undefined>(undefined);
-
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const fetchProjectData = async () => {
@@ -26,6 +26,7 @@ export default function EditProjects() {
 
     fetchProjectData();
   }, [id]);
+  
   const handleSubmit = async (data: ProjectDataForm) => {
     if (!id) {
       toast.error("Proyecto no disponible.");
@@ -34,6 +35,7 @@ export default function EditProjects() {
     try {
       await editProjectApi(parseInt(id),data);
       toast.success("¡Se actualizo con exito el proyecto!");
+      navigate("/");
     } catch (error) {
       toast.error("¡Ocurrió un error!");
       console.log('error '+error)

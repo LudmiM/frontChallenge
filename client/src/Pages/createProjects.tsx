@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router';
 import {ProjectDataForm} from '../../enums/project';
 import NavForms from '../Layout/navForms'
 import FormCreateEditProject from '../components/Form/projectCreateEdit'
@@ -5,10 +6,12 @@ import createProjectApi from '../utils/fetch/addProject'
 import { toast } from 'react-toastify';
 
 export default function CreateProjects() {
+  const navigate = useNavigate(); 
   const handleSubmit = async (data: ProjectDataForm) => {
     try {
       await createProjectApi(data);
       toast.success("¡Se creo con exito el projexto!");
+      navigate("/");
     } catch (error) {
       toast.error("¡Ocurrió un error!");
       console.log('error '+error)
