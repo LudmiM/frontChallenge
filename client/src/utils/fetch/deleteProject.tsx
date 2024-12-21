@@ -11,13 +11,13 @@ export const deleteProjectApi = async (id: number) => {
       });
   
       if (!response.ok) {
-        throw new Error('Failed to create project');
+        throw new Error('Failed to deleted project');
       }
   
       const responseData = await response.json();
       return responseData;
     } catch (error) {
-      console.error('Error creating project:', error);
+      console.error('Error delete project:', error);
       throw error;
     }
   };
