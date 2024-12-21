@@ -35,7 +35,7 @@ const FormCreateEditProject: React.FC<FormCreateEditProjectProps> = ({ initialDa
   return (
     <form onSubmit={handleSubmit(onSubmitHandler)} className='bg-neutral-50 p-5'>
       <div className='div-form-custom'>
-        <label htmlFor="name">Name</label>
+        <label htmlFor="name">Project name</label>
         <input
           {...register('name', { required: 'El nombre del proyecto es necesario' })}
           type="text"
@@ -58,7 +58,7 @@ const FormCreateEditProject: React.FC<FormCreateEditProjectProps> = ({ initialDa
       </div>
 
       <div className='div-form-custom'>
-        <label htmlFor="manager">Manager</label>
+        <label htmlFor="manager">Project manager</label>
         <select
           {...register('manager', { required: 'Debe elegir un manager' })}
           id="manager"

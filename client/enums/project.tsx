@@ -13,7 +13,7 @@ export interface ProjectDataForm {
     manager: string;
     assignedTo: string;
     status: string;
-    date?: string;
+    updatedAt: string;
     assignedToImg?: string;
     managerImg?: string;
   }
