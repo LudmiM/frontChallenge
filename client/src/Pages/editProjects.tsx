@@ -3,14 +3,36 @@ import FormCreateEditProject from '../components/Form/projectCreateEdit'
 import editProjectApi from '../utils/fetch/editProject'
 import getProjectApi from '../utils/fetch/getProject'
 import { toast } from 'react-toastify';
-import {ProjectDataForm} from '../../enums/project';
+import {ProjectData, ProjectDataForm} from '../../enums/project';
+import { useParams } from 'react-router';
+import { useEffect, useState } from 'react';
 
-export default async function EditProjects(id:number) {
-  const data = await getProjectApi(id)
+export default function EditProjects() {
+  const { id } = useParams<{ id: string }>();
+  const [projectData, setProjectData] = useState<ProjectData | undefined>(undefined);
 
+
+  useEffect(() => {
+    const fetchProjectData = async () => {
+      if (id) {
+        try {
+          const data = await getProjectApi(parseInt(id))
+          setProjectData(data.data);
+        } catch (error) {
+          console.error("Error al obtener los datos del proyecto:", error);
+        }
+      }
+    };
+
+    fetchProjectData();
+  }, [id]);
   const handleSubmit = async (data: ProjectDataForm) => {
+    if (!id) {
+      toast.error("Proyecto no disponible.");
+      return;
+    }
     try {
-      await editProjectApi(id,data);
+      await editProjectApi(parseInt(id),data);
       toast.success("¡Se creo con exito el proyecto!");
     } catch (error) {
       toast.error("¡Ocurrió un error!");
@@ -21,7 +43,7 @@ export default async function EditProjects(id:number) {
     <div className='w-full flex flex-col items-center'>
       <NavForms titleForm='Edit Project' />
       <div className="w-full max-w-5xl">
-        <FormCreateEditProject onSubmit={handleSubmit} initialData={data}/>
+        <FormCreateEditProject onSubmit={handleSubmit} initialData={projectData}/>
       </div>
     </div>
   )

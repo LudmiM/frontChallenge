@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { TaskStatusOptions } from '../../../enums/taskStatus';
 import {ProjectDataForm} from './../../../enums/project'
 import { useForm, SubmitHandler } from 'react-hook-form';
@@ -10,7 +10,7 @@ interface FormCreateEditProjectProps {
 
 const FormCreateEditProject: React.FC<FormCreateEditProjectProps> = ({ initialData, onSubmit}) => {
   
-  const { register, handleSubmit, formState: { errors } } = useForm<ProjectDataForm>({
+  const { register, handleSubmit,  formState: { errors }, reset  } = useForm<ProjectDataForm>({
     defaultValues: initialData || {
       name: '',
       description: '',
@@ -19,6 +19,12 @@ const FormCreateEditProject: React.FC<FormCreateEditProjectProps> = ({ initialDa
       status: '',
     },
   });
+
+  useEffect(() => {
+    if (initialData) {
+      reset(initialData); 
+    }
+  }, [initialData, reset]);
 
   const onSubmitHandler: SubmitHandler<ProjectDataForm> = (data) => {
     onSubmit(data); 

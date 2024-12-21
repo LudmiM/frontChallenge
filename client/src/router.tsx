@@ -11,6 +11,6 @@ export const router = createBrowserRouter([{
 }, {
     path: '/project/', element: <Navbar />, children: [
         { path: 'create', element: <CreateProjects />},
-        { path: 'edit', element: <EditProjects />},
+        { path: 'edit/:id', element: <EditProjects />},
     ]
 }])

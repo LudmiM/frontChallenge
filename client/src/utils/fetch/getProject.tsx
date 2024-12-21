@@ -15,7 +15,6 @@ export const getProjectApi = async (id: number) => {
       }
   
       const responseData = await response.json();
-      console.log(responseData)
       return responseData;
     } catch (error) {
       console.error('Error creating project:', error);

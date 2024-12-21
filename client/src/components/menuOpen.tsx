@@ -4,7 +4,11 @@ import { BiTrashAlt } from "react-icons/bi";
 import { RiEditBoxLine } from "react-icons/ri";
 import { Link } from 'react-router';
 
-const DropdownMenu = (id:number) => {
+interface DropdownMenuProps {
+  id: number;
+}
+
+const DropdownMenu: React.FC<DropdownMenuProps> = ({ id }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
