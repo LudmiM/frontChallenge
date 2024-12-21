@@ -2,6 +2,8 @@ import express from 'express';
 import router from './Routes/index.routes';
 import sequelize from './database/config';
 import cors from 'cors'; 
+import dotenv from 'dotenv';
+dotenv.config();
 
 //conexión a db
 async function connectDB() {
@@ -21,7 +23,7 @@ connectDB()
 const server = express();
 
 const corsOptions = {
-    origin: 'http://localhost:5173',
+    origin: process.env.VITE_CLIENT,
     methods: 'GET,POST,PATCH,DELETE', 
     allowedHeaders: 'Content-Type,Authorization', 
 };
