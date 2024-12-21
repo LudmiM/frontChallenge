@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .generic-flex {
+    @apply flex flex-wrap items-center;
+  }
+
+  .input-custom-form {
+    @apply border border-neutral-300 outline-none focus:ring-1 focus:ring-neutral-400 rounded-md;
+  }
+
+  .button-custom {
+    @apply bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-700;
+  }
+
+  .div-form-custom {
+    @apply flex flex-col mb-5;
+  }
+
+  .li-dropdown-menu {
+    @apply p-2 hover:bg-neutral-100 cursor-pointer generic-flex border-b border-neutral-200;
+  }
+
+  .hidden-movil-table{
+    @apply invisible lg:visible
+  }
+
+  .table-td {
+    @apply text-neutral-600 h-16 border-b border-neutral-300;
+  }
+
+  .table-th {
+    @apply hidden-movil-table text-left text-neutral-800 font-medium border-b border-neutral-300 py-5;
+  }
+
+  .imagen-generic{
+    @apply w-5 h-5 rounded-full object-cover mr-2;
+  }
+
+}
