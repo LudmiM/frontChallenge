@@ -7,7 +7,7 @@ const Navbar = () => {
       <ul className="flex space-x-4">
         <li>
           <a href="/" className="text-lg font-semibold">
-            Logo
+            <img src="logo.png"/>
           </a>
         </li>
       </ul>
