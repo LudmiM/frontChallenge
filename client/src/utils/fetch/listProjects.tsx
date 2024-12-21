@@ -1,4 +1,4 @@
-import { SERVER } from "../../src/constants";
+import { SERVER } from "../../constants";
 
 export const getAllProjectApi = async () => {
     const apiUrl = SERVER;

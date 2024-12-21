@@ -1,7 +1,7 @@
 import {ProjectDataForm} from '../../enums/project';
 import NavForms from '../Layout/navForms'
 import FormCreateEditProject from '../components/Form/projectCreateEdit'
-import createProjectApi from '../../utils/fetch/addProject'
+import createProjectApi from '../utils/fetch/addProject'
 import { toast, ToastContainer } from 'react-toastify';
 
 export default function CreateProjects() {

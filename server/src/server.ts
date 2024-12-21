@@ -7,7 +7,7 @@ import cors from 'cors';
 async function connectDB() {
     try {
         await sequelize.authenticate();
-        await sequelize.sync({force:true});
+        await sequelize.sync();
         console.log('Conexión a BD establecida con éxito.');
     }
     catch (error) {

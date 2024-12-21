@@ -1,5 +1,5 @@
-import {ProjectDataForm} from "../../enums/project";
-import { SERVER } from "../../src/constants";
+import {ProjectDataForm} from "../../../enums/project";
+import { SERVER } from "../../constants";
 
 export const createProjectApi = async (data: ProjectDataForm) => {
     const apiUrl = SERVER;
