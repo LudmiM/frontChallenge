@@ -2,7 +2,7 @@ import NavForms from '../Layout/navForms'
 import FormCreateEditProject from '../components/Form/projectCreateEdit'
 import editProjectApi from '../utils/fetch/editProject'
 import getProjectApi from '../utils/fetch/getProject'
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import {ProjectData, ProjectDataForm} from '../../enums/project';
 import { useParams } from 'react-router';
 import { useEffect, useState } from 'react';
@@ -33,7 +33,7 @@ export default function EditProjects() {
     }
     try {
       await editProjectApi(parseInt(id),data);
-      toast.success("¡Se creo con exito el proyecto!");
+      toast.success("¡Se actualizo con exito el proyecto!");
     } catch (error) {
       toast.error("¡Ocurrió un error!");
       console.log('error '+error)
@@ -45,6 +45,7 @@ export default function EditProjects() {
       <div className="w-full max-w-5xl">
         <FormCreateEditProject onSubmit={handleSubmit} initialData={projectData}/>
       </div>
+      <ToastContainer />
     </div>
   )
 }
