@@ -2,7 +2,7 @@ import NavForms from '../Layout/navForms'
 import FormCreateEditProject from '../components/Form/projectCreateEdit'
 import editProjectApi from '../utils/fetch/editProject'
 import getProjectApi from '../utils/fetch/getProject'
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import {ProjectData, ProjectDataForm} from '../../enums/project';
 import { useParams } from 'react-router';
 import { useEffect, useState } from 'react';
@@ -45,7 +45,6 @@ export default function EditProjects() {
       <div className="w-full max-w-5xl">
         <FormCreateEditProject onSubmit={handleSubmit} initialData={projectData}/>
       </div>
-      <ToastContainer />
     </div>
   )
 }

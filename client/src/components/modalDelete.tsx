@@ -1,7 +1,7 @@
 import { FaCheck } from "react-icons/fa6";
 import { IoIosClose } from "react-icons/io";
 import { ImCancelCircle } from "react-icons/im";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import deleteProjectApi from "../utils/fetch/deleteProject";
 
 interface MenuDeleteProps {
@@ -46,7 +46,6 @@ const MenuDelete: React.FC<MenuDeleteProps> = ({ id, onClose }) => {
           </button>
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 };

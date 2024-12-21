@@ -1,4 +1,5 @@
 import { Outlet } from "react-router";
+import { ToastContainer } from "react-toastify";
 
 const Navbar = () => {
   return (
@@ -15,6 +16,7 @@ const Navbar = () => {
     <div>
       <Outlet />
     </div>
+    <ToastContainer />
    </>
   );
 };
