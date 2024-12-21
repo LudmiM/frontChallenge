@@ -11,7 +11,7 @@ const deleteProject = async (req: Request, res: Response) => {
             return
         }
 
-        await project.isSoftDeleted();
+        await project.destroy();
 
         res.status(201).json({
             message: 'Project created successfully!',
