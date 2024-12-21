@@ -28,8 +28,8 @@ const ListProject: React.FC<ListProjectProps> = (datesProject) => {
                   <div className="block">{date.name}</div>
                   <div className="text-neutral-400">{date.date}</div>
                 </td>
-                <td className="hidden-movil-table table-td"><div className='generic-flex'><img src={`/${date.managerImg}`} className='imagen-generic' alt="Manager img" /> {date.manager}</div></td>
-                <td className="table-td"><div className='generic-flex'><img src={`/${date.assignedToImg}`} className="imagen-generic" alt="Assigned To img" />{date.assignedTo}</div></td>
+                <td className="hidden-movil-table table-td"><div className='generic-flex'><img src={`/${date.managerImg || 'sinImage.png'}`}  className='imagen-generic' alt="Manager img" /> {date.manager}</div></td>
+                <td className="table-td"><div className='generic-flex'><img  src={`/${date.assignedToImg || 'imagenPerfil.jpeg'}`}  className="imagen-generic" alt="Assigned To img" />{date.assignedTo}</div></td>
                 <td className="hidden-movil-table table-td"><p className='text-neutral-600 border border-neutral-300 px-1 inline-block'>{date.status}</p></td>
                 <td className="table-td"><DropdownMenu  id={date.id}/></td>
               </tr>
@@ -44,7 +44,7 @@ const ListProject: React.FC<ListProjectProps> = (datesProject) => {
           <p className="text-sm text-gray-500">09/09/2020 10:30 am</p>
           <div className="flex justify-between items-center mt-2">
             <div className="flex items-center">
-              <img className="h-8 w-8 rounded-full" src="sinImage.png" alt="Walt Cosani" />
+              <img className="h-8 w-8 rounded-full" src={`/${date.assignedToImg || 'imagenPerfil.jpeg'}`}  alt="Walt Cosani" />
               <span className="ml-2 text-sm">{date.assignedTo}</span>
             </div>
             <button><DropdownMenu id={date.id}/></button>

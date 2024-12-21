@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { TaskStatusOptions } from '../../../enums/taskStatus';
-import {ProjectDataForm} from './../../../enums/project'
+import { AssignedToOptions } from '../../../enums/assignTo';
+import { ManagerOptions } from '../../../enums/manager';
+import { ProjectDataForm } from './../../../enums/project'
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 interface FormCreateEditProjectProps {
@@ -8,9 +10,9 @@ interface FormCreateEditProjectProps {
   onSubmit: (data: ProjectDataForm) => void;
 }
 
-const FormCreateEditProject: React.FC<FormCreateEditProjectProps> = ({ initialData, onSubmit}) => {
-  
-  const { register, handleSubmit,  formState: { errors }, reset  } = useForm<ProjectDataForm>({
+const FormCreateEditProject: React.FC<FormCreateEditProjectProps> = ({ initialData, onSubmit }) => {
+
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<ProjectDataForm>({
     defaultValues: initialData || {
       name: '',
       description: '',
@@ -22,12 +24,12 @@ const FormCreateEditProject: React.FC<FormCreateEditProjectProps> = ({ initialDa
 
   useEffect(() => {
     if (initialData) {
-      reset(initialData); 
+      reset(initialData);
     }
   }, [initialData, reset]);
 
   const onSubmitHandler: SubmitHandler<ProjectDataForm> = (data) => {
-    onSubmit(data); 
+    onSubmit(data);
   };
 
   return (
@@ -35,7 +37,7 @@ const FormCreateEditProject: React.FC<FormCreateEditProjectProps> = ({ initialDa
       <div className='div-form-custom'>
         <label htmlFor="name">Name</label>
         <input
-          {...register('name', { required: 'El nombre del proyecto es necesario' })} 
+          {...register('name', { required: 'El nombre del proyecto es necesario' })}
           type="text"
           id="name"
           className="input-custom-form"
@@ -46,7 +48,7 @@ const FormCreateEditProject: React.FC<FormCreateEditProjectProps> = ({ initialDa
       <div className='div-form-custom'>
         <label htmlFor="description">Description</label>
         <input
-          {...register('description', { required: 'La descripcion del proyecto es necesaria' })} 
+          {...register('description', { required: 'La descripcion del proyecto es necesaria' })}
           type="text"
           id="description"
           name="description"
@@ -57,32 +59,46 @@ const FormCreateEditProject: React.FC<FormCreateEditProjectProps> = ({ initialDa
 
       <div className='div-form-custom'>
         <label htmlFor="manager">Manager</label>
-        <input
-        {...register('manager', { required: 'Debe elegit un manager' })} 
-          type="text"
+        <select
+          {...register('manager', { required: 'Debe elegir un manager' })}
           id="manager"
           name="manager"
           className='input-custom-form'
-        />
+        >
+
+          <option value="">Select manager</option>
+          {ManagerOptions.map((manager) => (
+            <option key={manager.label} value={manager.value}>
+              {manager.label}
+            </option>
+          ))}
+        </select>
         {errors.manager && <p className="text-red-500">{errors.manager.message}</p>}
       </div>
 
       <div className='div-form-custom'>
         <label htmlFor="assignedTo">Assigned To</label>
-        <input
-          {...register('assignedTo', { required: 'Debe asignar la tarea a una persona' })} 
-          type="text"
+        <select
+          {...register('assignedTo', { required: 'Debe asignar la tarea a una persona' })}
           id="assignedTo"
           name="assignedTo"
           className='input-custom-form'
-        />
+        >
+
+          <option value="">Select assignedTo</option>
+          {AssignedToOptions.map((assigned) => (
+            <option key={assigned.label} value={assigned.value}>
+              {assigned.label}
+            </option>
+          ))}
+        </select>
         {errors.assignedTo && <p className="text-red-500">{errors.assignedTo.message}</p>}
       </div>
 
       <div className='div-form-custom'>
         <label htmlFor="status">Status</label>
         <select
-          {...register('status', { required: 'El estatus es necesario' })} 
+          {...register('status', { required: 'El estatus es necesario' })}
           id="status"
           name="status"
           className="input-custom-form"

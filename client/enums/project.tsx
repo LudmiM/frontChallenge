@@ -17,4 +17,3 @@ export interface ProjectDataForm {
     assignedToImg?: string;
     managerImg?: string;
   }
-  
